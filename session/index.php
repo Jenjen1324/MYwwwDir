@@ -7,7 +7,7 @@ session_start();
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Nimisha isch dumm</title>
+    <title>Session</title>
     <link rel="stylesheet" type="text/css" href="/style/bootstrap.min.css">
   </head>
   <body>
