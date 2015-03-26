@@ -5,9 +5,6 @@ include("resources/head.php");
 
 include("resources/navbar.php");
 
-echo '<pre>';
-var_dump(User::loadUsers());
-echo '</pre>';
 ?>
 
 <div class="container">
