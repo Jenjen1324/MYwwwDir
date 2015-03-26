@@ -16,7 +16,11 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <li><a href="register.php">Registrieren</a></li>
-          <li><a data-toggle="modal" href="#modal_login">Login</a></li>
+          <?php if(!$current_user) { ?><li><a data-toggle="modal" href="#modal_login">Login</a></li> <?php }  else {?>
+          <li><a href="scripts/logout.php">Logout</a></li>
+          <li><a href="gallery.php">Gallerie</a></li>
+
+          <?php } ?>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

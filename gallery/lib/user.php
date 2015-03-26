@@ -9,17 +9,15 @@ class User {
   public $email;
   public $admin;
 
-  public function login($username, $password)
+  public static function login($username, $password)
   {
     @session_start();
     $users = User::loadUsers();
-    var_dump($users);
     foreach($users as $user)
     {
-      echo $user->username;
       if($user->username == $username)
       {
-        if(md5($user->password) == $password)
+        if($user->password == md5($password))
         {
           $_SESSION['uid'] = $user->id;
           return true;
@@ -31,8 +29,14 @@ class User {
       }
     }
 
-    die();
     throw new Exception("Benutzer nicht gefunden");
+  }
+
+  public static function logout()
+  {
+    @session_start();
+    unset($_SESSION['uid']);
+    session_destroy();
   }
 
   public static function register_user($username, $email, $password)

@@ -6,16 +6,16 @@ error_reporting(-1);
 require_once("lib/user.php");
 require_once("lib/picture.php");
 
-$current_user = User::getCurrentUser();
+if(isset($_GET['m']))
+  $msg = $_GET['m'];
 
 // - Login Script
-if(isset($_POST['username']) && isset($_POST['password']))
+if(isset($_POST['lusername']) && isset($_POST['lpassword']))
 {
-
   try
   {
-    User::login($_POST['username'], $_POST['password']);
-    header("Location: index.php");
+    User::login($_POST['lusername'], $_POST['lpassword']);
+    $msg = "Login erfolgreich!";
   }
   catch(Exception $ex)
   {
@@ -23,6 +23,9 @@ if(isset($_POST['username']) && isset($_POST['password']))
     die();
   }
 }
+
+
+$current_user = User::getCurrentUser();
 
  ?>
 <!DOCTYPE html>
@@ -47,11 +50,11 @@ if(isset($_POST['username']) && isset($_POST['password']))
             <div class="modal-body">
               <div class="form-group">
                 <label for="username">Benutzername</label>
-                <input type="text" class="form-control" id="username" name="username" placeholder="Benutzername eingeben" />
+                <input type="text" class="form-control" id="lusername" name="lusername" placeholder="Benutzername eingeben" />
               </div>
               <div class="form-group">
                 <label for="password">Passwort</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Passwort eingeben" />
+                <input type="password" class="form-control" id="lpassword" name="lpassword" placeholder="Passwort eingeben" />
               </div>
             </div>
             <div class="modal-footer">
@@ -64,12 +67,15 @@ if(isset($_POST['username']) && isset($_POST['password']))
     </div><!-- /.modal -->
 <?php } ?>
 
-<?php if(isset($_GET['m'])) { ?>
+<?php if(isset($msg)) { ?>
     <div class="modal fade" id="modal_message" tabindex="-1" role="dialog" aria-labelledby="modal_messageLabel" aria-hidden="true">
       <div class="modal-dialog">
+        <div class="modal-header">
+          <h4 class="modal-title">Nachricht</h4>
+        </div>
         <div class="modal-content">
           <div class="modal-body">
-            <?php echo $_GET['m']; ?>
+            <?php echo $msg; ?>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Schliessen</button>

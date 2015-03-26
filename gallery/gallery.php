@@ -14,7 +14,7 @@ include("resources/navbar.php");
         <a href="#"><img src="img/thmb.svg" alt="Thumbnail"></a>
         <div class="caption">
           <h3>Thumbnail label</h3>
-          <p style="text-style:justify;"><span class="glyphicon glyphicon-eye-open"></span> 12 <span class="glyphicon glyphicon-arrow-down"></span> 4 <span class="glyphicon glyphicon-comment"></span> 5</p>
+          <p style="text-style:justify;width:100%;"><span class="glyphicon glyphicon-eye-open"></span> 12 <span class="glyphicon glyphicon-arrow-down"></span> 4 <span class="glyphicon glyphicon-comment"></span> 5</p>
         </div>
       </div>
     </div>

@@ -25,7 +25,7 @@ if(isset($_POST['username']))
     try
     {
       User::register_user($username, $email, $password);
-      header("Location: index.php");
+      header("Location: index.php?m=Registration Erfolgreich!");
       die();
     }
     catch (Exception $ex)
@@ -68,12 +68,12 @@ if(isset($_POST['username']))
         <input type="password" class="form-control" id="password_verification" name="password_verification" placeholder="Passwort erneut eingeben" />
       </div>
       <div class="form-group">
-        <input type="submit" class="btn btn-default" value="Abschicken" />
+        <input type="submit" id="submit_register" class="btn btn-primary" value="Abschicken" />
       </div>
     </form>
   </div>
   <div class="col-md-6">
-    <div id="cloud-container"  style="overflow-y:scroll">
+    <div id="cloud-container"  style="overflow-y:scroll; padding: 5px;">
     <h1>Nutzungsbedingungen Internet-Forum</h1>
     <br />
 
@@ -177,10 +177,11 @@ if(isset($_POST['username']))
 <script>
 
 $(document).ready(function() {
-    $("#cloud-container").height($(window).height());
+    $("#cloud-container").height($(window).height() - 150);
 });
 
 </script>
+<script type="text/javascript" src="scripts/register.js"></script>
 
 <?php
 
