@@ -44,6 +44,10 @@ class Picture {
         return true;
       }
     }
+    else
+    {
+      throw new Exception("Du bist nicht eingeloggt!");
+    }
 
     return false;
   }
@@ -62,7 +66,7 @@ class Picture {
     return true;
   }
 
-  private static function loadPictures()
+  public static function loadPictures()
   {
     $data = file_get_contents(PATH_PICTURE);
     $pictures = unserialize($data);

@@ -66,18 +66,21 @@ class User {
 
     $users = User::loadUsers();
 
-    if(isset($_SESSION['uid']))
-    {
-      foreach($users as $user)
-      {
-        if($user->id == $_SESSION['uid'])
-          return $user;
-      }
-    }
-    else
-    {
+    if(!isset($_SESSION['uid']))
       return false;
+
+    return User::getUserById($_SESSION['uid']);
+  }
+
+  public static function getUserById($id)
+  {
+    $users = User::loadUsers();
+    foreach($users as $user)
+    {
+      if($user->id == $id)
+        return $user;
     }
+    return false;
   }
 
   public static function loadUsers()
@@ -91,6 +94,36 @@ class User {
   {
     $data = serialize($users);
     file_put_contents(PATH_USER, $data);
+  }
+
+  public static function deleteUser($user)
+  {
+    $finalusers = array();
+    $users = User::loadUsers();
+    foreach($users as $u)
+    {
+      if($u->id != $user->id)
+        $finalusers[] = $u;
+    }
+    User::saveUsers($finalusers);
+  }
+
+  public static function editUser($user)
+  {
+    $finalusers = array();
+    $users = User::loadUsers();
+    foreach($users as $u)
+    {
+      if($u->id == $user->id)
+      {
+        $finalusers[] = $user;
+      }
+      else
+      {
+        $finalusers[] = $u;
+      }
+    }
+    User::saveUsers($finalusers);
   }
 
 }

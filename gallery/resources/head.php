@@ -19,8 +19,7 @@ if(isset($_POST['lusername']) && isset($_POST['lpassword']))
   }
   catch(Exception $ex)
   {
-    header("Location: index.php?m=" . $ex->getMessage());
-    die();
+    $msg = $ex->getMessage();
   }
 }
 
@@ -32,8 +31,11 @@ $current_user = User::getCurrentUser();
 <html>
   <head>
     <title><?php echo $_TITLE; ?></title>
-    <link rel="stylesheet" type="text/css" href="style/bootstrap.min.css">
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style/main.css">
     <script src="scripts/jquery-1.11.2.min.js"></script>
   </head>
   <body>
@@ -59,7 +61,7 @@ $current_user = User::getCurrentUser();
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <input type="submit" class="btn btn-primary">Einloggen</button>
+              <input type="submit" class="btn btn-primary" value="Einloggen">
             </div>
           </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -70,10 +72,10 @@ $current_user = User::getCurrentUser();
 <?php if(isset($msg)) { ?>
     <div class="modal fade" id="modal_message" tabindex="-1" role="dialog" aria-labelledby="modal_messageLabel" aria-hidden="true">
       <div class="modal-dialog">
-        <div class="modal-header">
-          <h4 class="modal-title">Nachricht</h4>
-        </div>
         <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Nachricht</h4>
+          </div>
           <div class="modal-body">
             <?php echo $msg; ?>
           </div>

@@ -1,12 +1,27 @@
 <?php
-$_TITLE = "Index";
+$_TITLE = "Gallerie";
 
 include("resources/head.php");
 
 include("resources/navbar.php");
+
+$pics = Picture::loadPictures();
+
+
 ?>
 
 <div class="container">
+
+<?php
+$count = 0;
+
+foreach($pics as $p)
+{
+  if($count == 4)
+    $count = 0;
+  if($count == 0)
+    echo '<div class="row">';
+ ?>
 
   <div class="row">
     <div class="col-sm-6 col-md-4">
@@ -19,6 +34,14 @@ include("resources/navbar.php");
       </div>
     </div>
   </div>
+
+<?php
+  if($count == 0)
+    echo '</div>';
+
+  $count++;
+}
+ ?>
 
 </div>
 

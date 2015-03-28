@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -10,14 +10,17 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="index.php">SuperGallerie</a>
+        <?php if($current_user) { ?><p class="navbar-text">Eingeloggt als <b><?php echo $current_user->username; ?></b></p><?php } ?>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="register.php">Registrieren</a></li>
-          <?php if(!$current_user) { ?><li><a data-toggle="modal" href="#modal_login">Login</a></li> <?php }  else {?>
-          <li><a href="scripts/logout.php">Logout</a></li>
+
+          <?php if(!$current_user) { ?><li><a href="register.php">Registrieren</a></li>
+          <li><a data-toggle="modal" href="#modal_login">Anmelden</a></li> <?php }  else {?>
+          <?php if($current_user->admin) { ?><li><a href="admin.php">Administration</a></li><?php } ?>
+          <li><a href="scripts/logout.php">Abmelden</a></li>
           <li><a href="gallery.php">Gallerie</a></li>
 
           <?php } ?>

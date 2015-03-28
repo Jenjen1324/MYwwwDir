@@ -1,6 +1,5 @@
 
-<div style="height:100px;"></div>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
