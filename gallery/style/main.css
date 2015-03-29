@@ -2,3 +2,14 @@ body {
   padding-top: 70px;
   padding-bottom: 70px;
 }
+
+.modal-backdrop {
+    z-index: 0 !important;
+}
+
+.comment
+{
+  border: 1px solid #DCE4EC;
+  border-radius: 4px;
+  padding: 5px;
+}

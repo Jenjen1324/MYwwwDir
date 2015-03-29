@@ -43,11 +43,12 @@ catch(Exception $ex)
 
 try
 {
-if(isset($_POST['pname']))
-{
-  if($_POST['pname'] != "")
+  if(isset($_POST['pname']))
   {
-    Picture::uploadPicture($_POST['pname'], $_FILES["pupload"], $_POST['desc']);
+    if($_POST['pname'] != "")
+    {
+      Picture::uploadPicture($_POST['pname'], $_FILES["pupload"], $_POST['pdesc']);
+    }
   }
 }
 catch (Exception $ex)

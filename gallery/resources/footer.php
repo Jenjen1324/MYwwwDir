@@ -10,7 +10,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <span class="navbar-text">&copy; <span style="font-weight:bold;">Jens Vogler</span>, Nikola Lapcic, Manuel Ryffel, Maulana Arschhaar</p>
+        <span class="navbar-text">&copy; <span style="font-weight:bold;">Jens Vogler</span>, Nikola Lapcic, Manuel Ryffel, Maulana Arschhaar</span>
       </div>
     </div><!-- /.container-fluid -->
   </div>
