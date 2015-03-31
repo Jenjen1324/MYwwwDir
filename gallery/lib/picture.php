@@ -55,6 +55,12 @@ class Picture {
     return false;
   }
 
+  public function getExt()
+  {
+    $tmp = explode('.', $this->filename);
+    return $tmp[sizeof($tmp) - 1];
+  }
+
   public function deletePicture($picid)
   {
     $pictures = Picture::loadPictures();

@@ -57,6 +57,12 @@ catch (Exception $ex)
 }
 ?>
 
+<style>
+.file {
+  padding: 0;
+}
+</style>
+
 <div class="container">
   <div class="col-md-6">
     <h1>Benutzer</h1>
@@ -95,7 +101,7 @@ catch (Exception $ex)
       </div>
       <div class="form-group">
         <label for="pupload">Bild auswählen</label>
-        <input type="file" class="form-control" id="pupload" name="pupload">
+        <input type="file" class="form-control file" id="pupload" name="pupload">
       </div>
       <div class="form-group">
         <label for="pdesc">Beschreibung</label>

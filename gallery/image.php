@@ -29,6 +29,9 @@ else
   header("Location: index.php?m=Sie sind nicht angemeldet!");
 }
 
+$pic->views++;
+Picture::editPicture($pic);
+
 ?>
 
 <style>
@@ -67,18 +70,44 @@ img {
       }
     }
      ?>
+   <h2>Neuer Kommentar</h2>
+   <form method="post" action="image.php?id=<?php echo $pic->id; ?>">
+     <div class="form-group">
+       <label for="ctext">Text</label>
+       <textarea id="ctext" name="ctext" class="form-control"></textarea>
+     </div>
+     <div class="form-group">
+       <input type="submit" value="Abschicken" class="btn btn-primary">
+     </div>
+   </form>
   </div>
   <div class="col-md-6">
-  <h2>Neuer Kommentar</h2>
-    <form method="post" action="image.php?id=<?php echo $pic->id; ?>">
-      <div class="form-group">
-        <label for="ctext">Text</label>
-        <textarea id="ctext" name="ctext" class="form-control"></textarea>
-      </div class="form-group">
-      <div class="form-group">
-        <input type="submit" value="Abschicken" class="btn btn-primary">
-      </div>
-    </form>
+   <div class="panel panel-default">
+     <div class="panel-heading">
+       Info
+     </div>
+     <?php if($pic->desc) { ?><div class="panel-body">
+       <p><?php echo $pic->desc; ?></p>
+     </div><?php } ?>
+     <table class="table">
+       <tr>
+         <td><span class="glyphicon glyphicon-eye-open"></span> Besuche</td>
+         <td><?php echo $pic->views; ?></td>
+       </tr>
+       <tr>
+         <td><span class="glyphicon glyphicon-arrow-down"></span> Downloads</td>
+         <td><?php echo $pic->downloads; ?></td>
+       </tr>
+       <tr>
+         <td><span class="glyphicon glyphicon-comment"></span> Kommentare</td>
+         <td><?php echo sizeof($pic->comments); ?></td>
+       </tr>
+     </table>
+     <div class="panel-body">
+       <a href="download.php?id=<?php echo $pic->id; ?>" class="btn btn-primary btn-lg btn-block">Runterladen</a>
+
+     </div>
+   </div>
   </div>
 </div>
 
